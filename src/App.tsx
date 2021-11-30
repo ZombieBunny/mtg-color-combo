@@ -32,6 +32,10 @@ class App extends Component<IProps, IState> {
           }
         })[0],
       });
+    } else {
+      this.setState({
+        combo: combos[0],
+      });
     }
   }
 
