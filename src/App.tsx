@@ -4,49 +4,63 @@ import React, { Component } from "react";
 
 interface IState {
   combo: Combo;
+  selected: string[];
 }
 interface IProps {}
 class App extends Component<IProps, IState> {
   public selected: string[] = [];
-  // public comboName: Combo = combos[0];
 
   constructor(props: any) {
     super(props);
-    this.state = { combo: combos[0] };
+    this.state = { combo: combos[0], selected: [] };
+
+    const queryParameters = new URLSearchParams(window.location.search);
+    const name = queryParameters.get("name");
+    if (!!name) {
+      this.selectName(name);
+    }
+  }
+
+  public selectName(name: string | null) {
+    const combo = combos!.filter(
+      (c) => c.name.toLowerCase() === name!.toLowerCase()
+    )[0];
+    this.selected = combo?.color;
+    this.state = { combo: combo, selected: combo.color };
   }
 
   public selectColor(color: string) {
-    this.selected.includes(color)
-      ? (this.selected = this.selected.filter((s) => s !== color))
-      : this.selected.push(color);
-    console.log(color, this.selected);
+    let selected = [...this.state.selected];
+    selected.includes(color)
+    ? (selected = selected.filter((s) => s !== color))
+    : selected.push(color);
 
-    if (this.selected && this.selected.length) {
+    if (selected && selected.length) {
+      const combo = combos.filter((c) => {
+        if (c.color.length === selected.length && this.hasMatch(c.color, selected)) {
+          return c;
+        }
+      })[0];
       this.setState({
-        combo: combos.filter((c) => {
-          if (
-            c.color.length === this.selected.length &&
-            this.hasMatch(c.color)
-          ) {
-            return c;
-          }
-        })[0],
+        combo,
+        selected
       });
     } else {
       this.setState({
         combo: combos[0],
+        selected
       });
     }
   }
 
-  public hasMatch(colors: string[]): boolean {
+  public hasMatch(colors: string[], selected: string[]): boolean {
     let reducer = (previousValue: string, currentValue: Combo) =>
       (previousValue += currentValue);
     return (
       colors.sort().reduce((previousValue, currentValue: any) => {
         return reducer(previousValue, currentValue);
       }) ===
-      this.selected.sort().reduce((previousValue, currentValue: any) => {
+      selected.sort().reduce((previousValue, currentValue: any) => {
         return reducer(previousValue, currentValue);
       })
     );
@@ -61,7 +75,7 @@ class App extends Component<IProps, IState> {
               <button
                 onClick={() => this.selectColor(co)}
                 className={`${co} ${
-                  this.selected.includes(co) ? "selected" : ""
+                  this.state.selected.includes(co) ? "selected" : ""
                 }`}
                 key={co}
               >
