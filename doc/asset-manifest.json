@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/mtg-color-combo/static/css/main.413bef57.chunk.css",
+    "main.js": "/mtg-color-combo/static/js/main.6f9950ab.chunk.js",
+    "main.js.map": "/mtg-color-combo/static/js/main.6f9950ab.chunk.js.map",
+    "runtime-main.js": "/mtg-color-combo/static/js/runtime-main.411cbac8.js",
+    "runtime-main.js.map": "/mtg-color-combo/static/js/runtime-main.411cbac8.js.map",
+    "static/js/2.134119cc.chunk.js": "/mtg-color-combo/static/js/2.134119cc.chunk.js",
+    "static/js/2.134119cc.chunk.js.map": "/mtg-color-combo/static/js/2.134119cc.chunk.js.map",
+    "static/js/3.ef8f644f.chunk.js": "/mtg-color-combo/static/js/3.ef8f644f.chunk.js",
+    "static/js/3.ef8f644f.chunk.js.map": "/mtg-color-combo/static/js/3.ef8f644f.chunk.js.map",
+    "index.html": "/mtg-color-combo/index.html",
+    "static/css/main.413bef57.chunk.css.map": "/mtg-color-combo/static/css/main.413bef57.chunk.css.map",
+    "static/js/2.134119cc.chunk.js.LICENSE.txt": "/mtg-color-combo/static/js/2.134119cc.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/mtg-color-combo/static/media/mtg-color.51e001b4.png"
+  },
+  "entrypoints": [
+    "mtg-color-combo/static/js/runtime-main.411cbac8.js",
+    "mtg-color-combo/static/js/2.134119cc.chunk.js",
+    "mtg-color-combo/static/css/main.413bef57.chunk.css",
+    "mtg-color-combo/static/js/main.6f9950ab.chunk.js"
+  ]
+}
